@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+   
+    <div id="root">
+        <div class="container">
+            <h1 class="fleft">Liste des étudiants</h1>
+            <button class="fright new" @click="showingAddModal= true;">Nouveau</button>
+            <div class="clear"></div>
+            <hr>
+            <p class="errorMessage" v-if="errorMessage" >{{errorMessage}} </p>
+            <p class="succesMessage" v-if="succesMessage" >{{succesMessage}} </p>
+            <table class="list">
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Editer</th>
+                    <th>Supprimer</th>
+                </tr>
+                <tr v-for="etudiant in etudiants" >
+                    <td>{{etudiant.id_etudiant}} </td>
+                    <td>{{etudiant.nom_etudiant}} </td>
+                    <td>{{etudiant.prenom_etudiant}} </td>
+                    <td><button @click="showingEditModal = true; selectEtudiant(etudiant);" >Editer</button></td>
+                    <td><button @click="showingDeleteModal = true; selectEtudiant(etudiant);">Supprimer</button</td>
+                </tr>
+            </table>
+        </div>
+    <!-- Modal pour l'ajout d'étudiant -->
+    <div class="modal" id="addModal" v-if="showingAddModal">
+            <div class="modalContainer">
+                <div class="modalHeader">
+                    <p class="fleft">Ajouter un etudiant</p>
+                    <button class="close" @click="showingAddModal = false;" >x</button>
+                </div>
+             <div class="modalContent">
+                <table class="form">
+                    <tr>
+                        <th>Nom</th>
+                        <th> : </th>
+                        <td><input type="text" name="" v-model="newEtudiant.nom" ></td>
+                    </tr>
+
+                    <tr>
+                        <th>Prénom</th>
+                        <th> : </th>
+                        <td><input type="text" name="" v-model="newEtudiant.prenom" ></td>
+                    </tr>
+
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <td><button @click="showingAddModal = false; saveEtudiant()">Enregistrer</td>
+                    </tr>
+                </table>
+            </div> 
+        </div>
+    </div>
+
+    <!-- Modal pour edition des données -->
+    <div class="modal" id="editModal" v-if="showingEditModal">
+            <div class="modalContainer">
+                <div class="modalHeader">
+                    <p class="fleft">Modifier un etudiant</p>
+                    <button class="close" @click="showingEditModal = false;" >x</button>
+                </div>
+             <div class="modalContent">
+                <table class="form">
+                    <tr>
+                        <th>Nom</th>
+                        <th> : </th>
+                        <td><input type="text" name="" v-model="clickedEtudiant.nom_etudiant" ></td>
+                    </tr>
+
+                    <tr>
+                        <th>Prénom</th>
+                        <th> : </th>
+                        <td><input type="text" name="" v-model="clickedEtudiant.prenom_etudiant" ></td>
+                    </tr>
+
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <td><button @click="showingEditModal = false; updateEtudiant()">Modifier</td>
+                    </tr>
+                </table>
+            </div> 
+        </div>
+    </div>
+
+    <!-- Modal pour la suppression des données -->
+    <div class="modal" id="deleteModal" v-if="showingDeleteModal">
+            <div class="modalContainer">
+                <div class="modalHeader">
+                    <p class="fleft ">Modifier un etudiant</p>
+                    <button class="fright close" @click="showingDeleteModal = false;" >x</button>
+                </div>
+             <div class="modalContent">
+                <p>Vous êtes sur le point de supprimer l'étudiant '{{clickedEtudiant.nom_etudiant}}' </p>
+                <br><br><br>
+                <button @click="showingDeleteModal = false; deleteEtudiant()" >Oui</button>
+                <button @click="showingDeleteModal = false;" >Non </button>
+            </div> 
+        </div>
+    </div>
+
+</div>
+
+<script src="axios.js"></script>
+<script src="vue.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

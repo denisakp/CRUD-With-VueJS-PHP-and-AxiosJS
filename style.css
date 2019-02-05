@@ -1,0 +1,120 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.container{
+	width: 960px;
+	margin: auto;
+	margin-top: 44px;
+}
+
+.fleft{
+	float: left;
+}
+
+.fright{
+	float: right;
+}
+
+.clear{
+	clear: both;
+}
+
+h1{
+	font-size: 22px;
+}
+
+.addNew{
+	padding: 2px 9px;
+}
+
+table.list{
+	width: 100%;
+	margin-top: 33px;
+	table-layout: fixed;
+	border-collapse: collapse;
+	min-width: 30%;
+}
+
+table.list th{
+	background: #1A68B8;
+	color: #FFFFFF;
+	padding: 9px;
+	text-transform: uppercase;
+}
+
+table.list td{
+	padding: 9px;
+	text-align: center;
+}
+
+table.list tr{
+	background: #EEEEEE;
+}
+
+
+button{
+	padding: 2px 9px;
+}
+
+.modal{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0, 0.4);
+}
+
+.modalContainer{
+	width: 555px;
+	background: #FFFFFF;
+	margin: auto;
+	margin-top: 44px;
+}
+
+.modalHeader{
+	padding: 25px;
+	background: #06307C;
+	color: #FFFFFF;
+}
+
+.modalContent{
+	min-height: 200px;
+	padding: 44px;
+}
+
+.close{
+	background: #D73131;	
+	padding: 4px 8px;
+	border: none;
+	color: #FFFFFF;
+	float: right;
+	position: relative;
+	top: -24px;
+	right: -24px;
+}
+
+table.form input, table.form td{
+	padding: 6px;
+}
+
+p.succesMessage{
+	background: #D8EFC2;
+	color: #097133;
+	border-left: 5px solid  #097133;
+	padding: 9px;
+	margin: 22px 0;
+}
+
+p.errorMessage{
+	background: #EFCBC2;
+	color: #D71517;
+	border-left: 5px solid  #DA1527;
+	padding: 9px;
+	margin: 22px 0;
+}
+
+/* Partie responsive du tableau */
+
