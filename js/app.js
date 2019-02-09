@@ -17,7 +17,7 @@ var app = new Vue({
     methods: {
         //Getting all students function
         getAllEtudiants: function(){
-            axios.get("http://localhost:3000/api.php?action=read")
+            axios.get("http://localhost:3000/api/api.php?action=read")
             .then(function(response){
                 console.log(response);
                 if(response.data.error){
@@ -31,7 +31,7 @@ var app = new Vue({
         saveEtudiant: function(){
             console.log(app.newEtudiant);
            var formData = app.toFormData(app.newEtudiant);
-           axios.post("http://localhost:3000/api.php?action=create", formData)
+           axios.post("http://localhost:3000/api/api.php?action=create", formData)
            .then(function(response){
                console.log(response);
                app.newEtudiant = {nom: "",prenom: ""};
@@ -45,7 +45,7 @@ var app = new Vue({
         //Editing student function
         updateEtudiant: function(){
             var formData = app.toFormData(app.clickedEtudiant);
-            axios.post("http://localhost:3000/api.php?action=update", formData)
+            axios.post("http://localhost:3000/api/api.php?action=update", formData)
             .then(function(response){
                 app.clickedEtudiant = {};
                 if(response.data.error){
@@ -59,7 +59,7 @@ var app = new Vue({
         //Deleting student function
         deleteEtudiant: function(){
             var formData = app.toFormData(app.clickedEtudiant);
-            axios.post("http://localhost:3000/api.php?action=delete",formData)
+            axios.post("http://localhost:3000/api/api.php?action=delete",formData)
             .then(function(response){
                 app.clickedEtudiant = {};
                 if(response.data.error){
