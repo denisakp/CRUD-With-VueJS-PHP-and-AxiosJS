@@ -15,6 +15,7 @@ var app = new Vue({
         this.getAllEtudiants();
     },
     methods: {
+        //Getting all students function
         getAllEtudiants: function(){
             axios.get("http://localhost:3000/api.php?action=read")
             .then(function(response){
@@ -26,7 +27,7 @@ var app = new Vue({
                 }
             });
         },
-        //Fonction pour enregistrer un nouvel étudiant
+        //Saving student function
         saveEtudiant: function(){
             console.log(app.newEtudiant);
            var formData = app.toFormData(app.newEtudiant);
@@ -41,7 +42,7 @@ var app = new Vue({
                }
            });
         },
-        //Fonction pour editer un nouvel étudiant
+        //Editing student function
         updateEtudiant: function(){
             var formData = app.toFormData(app.clickedEtudiant);
             axios.post("http://localhost:3000/api.php?action=update", formData)
@@ -55,7 +56,7 @@ var app = new Vue({
                 }
             });
         },
-        //Fonction pour supprimer un nouvel étudiant
+        //Deleting student function
         deleteEtudiant: function(){
             var formData = app.toFormData(app.clickedEtudiant);
             axios.post("http://localhost:3000/api.php?action=delete",formData)
@@ -69,7 +70,7 @@ var app = new Vue({
                 }
             });
         },
-        //Fonction étudiant selectionné
+        //Selected student
         selectEtudiant(etudiant){
             app.clickedEtudiant = etudiant;
         },
